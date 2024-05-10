@@ -1,0 +1,23 @@
+printmsg@> OutputMsg $ ( , ) @<
+
+printvar@> OutputVar $ ( , ) @<
+
+int@> Int $ = @<
+
+string@> Text $ = , # @<
+
+function@> Function $ ( , ) @<
+
+addcodefunction@> Funcode $ > , < @<
+
+callfunction@> CallFunc $ ( , ) @<
+
+input@> Inputvar $ # @<
+
+float@> Floating $ = @<
+
+if@> If $ [ , ] @<
+
+repeat@> For @<
+
+start ica
