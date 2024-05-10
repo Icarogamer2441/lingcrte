@@ -59,6 +59,20 @@ def interpret(code):
         elif line.startswith("repeat"):
             repeatname = line.split("@> ")[1].split(" @<")[0].strip("\"\'")
             tokens["repeat"] = [repeatname]
+        elif line.startswith("bool"):
+            boolname = line.split("@> ")[1].split(" $ ")[0].strip("\"\'")
+            boolequals = line.split(" $ ")[1].split(" @<")[0].strip("\"\'")
+            tokens["bool"] = [boolname, boolequals]
+        elif line.startswith("addnumber"):
+            addnumbername = line.split("@> ")[1].split(" $ ")[0].strip("\"\'")
+            addnumberstart = line.split(" $ ")[1].split(" , ")[0].strip("\"\'")
+            addnumberend = line.split(" , ")[1].split(" @<")[0].strip("\"\'")
+            tokens["addnumber"] = [addnumbername, addnumberstart, addnumberend]
+        elif line.startswith("removenumber"):
+            removenumbername = line.split("@> ")[1].split(" $ ")[0].strip("\"\'")
+            removenumberstart = line.split(" $ ")[1].split(" , ")[0].strip("\"\'")
+            removenumberend = line.split(" , ")[1].split(" @<")[0].strip("\"\'")
+            tokens["removenumber"] = [removenumbername, removenumberstart, removenumberend]
         elif line.startswith("start"):
             extension = line.split(" ")[1].strip("\"\'")
             def interpretlang(coding):
@@ -134,6 +148,21 @@ def interpret(code):
                             elif linne.startswith(f"end{pycodename}"):
                                 exec("\n".join(pycode))
                                 break
+                    elif linee.startswith(tokens["bool"][0]):
+                        varname = linee.split(" ")[1].split(" " + tokens["bool"][1] + " ")[0].strip("\"\'")
+                        value = linee.split(" " + tokens["bool"][1] + " ")[1].strip("\"\'")
+                        if value == "true":
+                            variables[varname] = True
+                        elif value == "false":
+                            variables[varname] = False
+                    elif linee.startswith(tokens["addnumber"][0]):
+                        varname = linee.split(tokens["addnumber"][1])[1].split(",")[0].strip("\"\'")
+                        addnumber = linee.split(",")[1].split(tokens["addnumber"][2])[0].strip("\"\'")
+                        variables[varname] += int(addnumber)
+                    elif linee.startswith(tokens["removenumber"][0]):
+                        varname = linee.split(tokens["removenumber"][1])[1].split(",")[0].strip("\"\'")
+                        addnumber = linee.split(",")[1].split(tokens["removenumber"][2])[0].strip("\"\'")
+                        variables[varname] += int(addnumber)
             filename = input(f"what's your .{extension} file? > ")
             if filename.endswith(f".{extension}"):
                 with open(filename, "r") as fi:
@@ -149,6 +178,6 @@ def execute_file(filename):
     else:
         print("use .ling file extension!")
 
-print("lingcrte v1.0")
+print("lingcrte v1.1")
 filename = input("what's your .ling file? > ")
 execute_file(filename)
