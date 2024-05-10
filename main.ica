@@ -1,0 +1,31 @@
+OutputMsg(hello)
+Int n1 = 10
+OutputVar(n1)
+Text texto = #hello world!#
+Floating n2 = 21.50
+Int n3 = 10
+
+OutputVar(n2)
+
+OutputVar(texto)
+
+Function(omaga)
+
+Funcode omaga >OutputMsg(hello world!)<
+
+Inputvar msg #say a message >  #
+OutputVar(msg)
+
+CallFunc(omaga)
+
+If[n1,n3] >> if1
+if1$ OutputMsg(n1 and n3 is the same) $codend
+endif1
+
+python >> pycode
+pycode@ print("hello world from python!") @codend
+endpycode
+
+For 5 >> repeat1
+repeat1@ OutputMsg(HELLOOOOOOOOOOOO) @codend
+endrepeat1
