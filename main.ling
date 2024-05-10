@@ -20,4 +20,10 @@ if@> If $ [ , ] @<
 
 repeat@> For @<
 
+bool@> Boolean $ = @<
+
+addnumber@> Add $ ( , ) @<
+
+removenumber@> Remove $ ( , ) @<
+
 start ica
