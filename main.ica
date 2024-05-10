@@ -29,3 +29,15 @@ endpycode
 For 5 >> repeat1
 repeat1@ OutputMsg(HELLOOOOOOOOOOOO) @codend
 endrepeat1
+
+Boolean isTrue = true
+
+OutputVar(isTrue)
+
+Add(n1,10)
+
+OutputVar(n1)
+
+Remove(n1,5)
+
+OutputVar(n1)
